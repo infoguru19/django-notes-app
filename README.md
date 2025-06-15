@@ -6,6 +6,13 @@ This is a simple notes app built with React and Django.
 2. Node.js
 3. React
 
+## Nginx
+
+Install Nginx reverse proxy to make this application available
+
+## MySQL
+It is for Database
+
 ## Installation
 1. Clone the repository
 ```
@@ -17,14 +24,22 @@ git clone https://github.com/infoguru19/django-notes-app.git
 docker build -t notes-app .
 ```
 
-3. Run the app
+3. Run the Docker Compose
 ```
-docker run -d -p 8000:8000 notes-app:latest
+docker compose up --build
 ```
 
-## Nginx
+4. Check Containers.
+```
+root@master:~# docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED         STATUS                   PORTS                                         NAMES
+5a840a6e6184   nginx        "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes             0.0.0.0:80->80/tcp, [::]:80->80/tcp           nginx_cont
+0c0a8dea23d7   django_app   "sh -c 'python manag…"   2 minutes ago   Up 2 minutes (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   django_cont
+d0fa8a81f1ce   mysql        "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes (healthy)   3306/tcp, 33060/tcp                           db_cont
+root@master:~#
+```
+5. Check Notes-App in Browser with ip
+```
+http://<IP>/
+```
 
-Install Nginx reverse proxy to make this application available
-
-`sudo apt-get update`
-`sudo apt install nginx`
