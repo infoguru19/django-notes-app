@@ -42,4 +42,6 @@ root@master:~#
 ```
 http://<IP>/
 ```
+![image](https://github.com/user-attachments/assets/494dd81c-d355-486c-be43-bfb340d7be50)
+
 
